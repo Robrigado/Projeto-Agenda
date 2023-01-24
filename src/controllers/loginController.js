@@ -9,7 +9,8 @@ exports.register = async (req, res) => {
     const login = new Login(req.body);
     await login.register();
 
-    if(!login.body.email || !login.body.password) return; 
+    if(!login.body.email || !login.body.password) return res.redirect('/login'); 
+
 
     if(login.errors.length > 0) {
         req.flash('errors', login.errors);
