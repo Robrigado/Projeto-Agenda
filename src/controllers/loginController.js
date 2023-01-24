@@ -21,7 +21,11 @@ exports.register = async (req, res) => {
             return;
         }
     
-        res.send('Em viado');
+        req.flash('success', 'Conta cadastrada com sucesso!');
+        req.session.save(() => {
+            return res.redirect('/login');
+        });
+        
     } catch(e) {
         console.log(e);
         return res.render('404');
