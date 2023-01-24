@@ -1,6 +1,7 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (req, res) => {
+    if(req.session.user) return res.redirect('/');
     res.render('login');
     return;
 };
@@ -59,3 +60,8 @@ exports.login = async (req, res) => {
         return res.render('404');
     }
 };
+
+exports.logout = (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+}
