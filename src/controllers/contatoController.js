@@ -35,7 +35,6 @@ exports.editContact = async (req, res) => {
     if(!req.params.id) return res.render('404');
 
     const contato = await Contato.buscaId(req.params.id);
-    console.log(contato);
     if(!contato) return res.render('404');
 
     return res.render('contato');

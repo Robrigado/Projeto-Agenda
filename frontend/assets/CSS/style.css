@@ -1,4 +1,21 @@
-.contato-form {
+.contato-form, .login-form, .register-form {
     position: relative;
     top: 40px;
+}
+
+.login-button:hover, .register-form:hover {
+    cursor: pointer;
+}
+
+.login-button, .register-button{
+    color: rgb(41, 80, 255);
+    font-weight: bold;
+}
+
+.invisible {
+    display: none;
+}
+
+.register-form {
+    display: none;
 }
