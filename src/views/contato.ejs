@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+<%- include('includes/navBar.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Novo contato</h1>
+      <p class="text-center lead">cadastre seu novo contato</p>
+
+      <%- include('./includes/messages.ejs') %>
+
+      <div class="row">
+
+        <div class="col-sm">
+
+          <form action="/contato/register" method="post" class="contato-form">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="mb-3 ">
+              <label class="form-label">Nome</label>
+              <input type="text" class="form-control" aria-describedby="email-input" name="nome">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Sobrenome</label>
+              <input type="text" class="form-control" aria-describedby="password-input" name="sobrenome">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Telefone</label>
+              <input type="text" class="form-control" aria-describedby="password-input" name="telefone">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">E-mail</label>
+              <input type="email" class="form-control" aria-describedby="password-input" name="email">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer.ejs') %>
