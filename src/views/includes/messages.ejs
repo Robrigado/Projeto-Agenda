@@ -1,6 +1,6 @@
 <% if(errorMessages.length > 0) { %>
     <div class="row">
-        <div class="col my-3">
+        <div class="col my-1">
         <div class="alert alert-danger">
             <% errorMessages.forEach(erro => { %>
              <%= erro %> <br>
@@ -12,7 +12,7 @@
 
 <% if(successMessage.length > 0) { %>
     <div class="row">
-        <div class="col my-3">
+        <div class="col my-1">
         <div class="alert alert-success">
             <% successMessage.forEach(success => { %>
              <%= success %> <br>

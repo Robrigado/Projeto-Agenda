@@ -12,10 +12,6 @@
     font-weight: bold;
 }
 
-.invisible {
-    display: none;
-}
-
-.register-form {
+.login-form {
     display: none;
 }
