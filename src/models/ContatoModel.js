@@ -35,9 +35,8 @@ class Contato {
         this.cleanUp();
 
         if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('Email inválido!');
-        if(!this.body.nome) this.errors.push('Nome é um campo obrigatório.');
-        if(!this.body.telefone && !this.body.email) this.errors.push('É necessário informar pelo menos uma forma de contato.')
-
+        if(this.body.nome.trim().length === 0) this.errors.push('Nome é um campo obrigatório.');
+        if(this.body.telefone.trim().length === 0 && this.body.email.trim().length === 0) this.errors.push('É necessário informar pelo menos uma forma de contato.');
     };
 
     cleanUp() {
@@ -47,13 +46,23 @@ class Contato {
             }
         }
 
+        
         this.body = {
             nome: this.body.nome,
-            sobrenome: this.sobrenome,
+            sobrenome: this.body.sobrenome,
             telefone: this.body.telefone,
             email: this.body.email
         };
     };
+
+    async edit(id) {
+        if(typeof id !== 'string') return;
+        this.validate();
+                                                              //novo obj    options new=true -> retorna o obj novo, ao invés do antigo                                
+        this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true });                   
+    }
 }
+
+
 
 module.exports = Contato;
