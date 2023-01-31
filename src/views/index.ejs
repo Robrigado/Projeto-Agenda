@@ -5,36 +5,42 @@
   <div class="row">
     <div class="col-lg-2"></div>
 
-    <div class="col-lg-8 my-3">
+    <div class="col-lg-8 my-3 agenda">
       <h1 class="text-center">Agenda</h1>
-      <p class="text-center lead">Seus contatos estão abaixo</p>
+      <p class="text-center lead">administre seus contatos</p>
 
       <%- include('includes/messages') %> 
 
-      <div class="responsive-table">
-      <table class="table my-3">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Sobrenome</th>
-            <th scope="col">Número</th>
-            <th scope="col">email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% contatos.forEach(contato => { %>
+      <% if (contatos.length > 0) { %>
+        <div class="responsive-table">
+        <table class="table my-3">
+          <!-- <thead>
             <tr>
-              <td><%= contato.nome %></td>
-              <td><%= contato.sobrenome %></td>
-              <td><%= contato.telefone %></td>
-              <td><%= contato.email %></td>
-              <td id="edit-btn"><a href="/contato/<%= contato._id %>">Editar</a></td>
-              <td id="delete-btn"><a href="/contato/delete" class="text-danger">deletar</a></td>
+              <th scope="col">Nome</th>
+              <th scope="col">Sobrenome</th>
+              <th scope="col">Número</th>
+              <th scope="col">email</th>
             </tr>
-          <% }) %>
-        </tbody>
-      </table>
-      </div>
+          </thead> -->
+          <tbody>
+            <% contatos.forEach(contato => { %>
+              <tr>
+                <td><%= contato.nome %></td>
+                <td><%= contato.sobrenome %></td>
+                <td><%= contato.telefone %></td>
+                <td><%= contato.email %></td>
+                <td id="edit-btn"><a href="/contato/<%= contato._id %>">Editar</a></td>
+                <td id="delete-btn"><a href="/contato/delete/<%= contato._id %>" class="text-danger">deletar</a></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        </div>
+      <% } else { %>
+        <p id="no-contact" class="text-center lead">Nenhum contato cadastrado</p>
+      <% } %>
+      
+       
     </div>
 
     <div class="col-lg-2"></div>

@@ -31,15 +31,17 @@ exports.registerContact = async (req, res) => {
 }
 
 exports.editContact = async (req, res) => {
-    if(!req.params.id) return res.render('404');
-    
-    const contato = await Contato.buscaId(req.params.id);
-    if(!contato) return res.render('404');
-    
-    return res.render('contato', { contato } );
+    try {
+        if(!req.params.id) return res.render('404');
+        const contato = await Contato.buscaId(req.params.id);
+        if(!contato) return res.render('404');
+        return res.render('contato', { contato } );
+    } catch (e) {
+	console.log(e);
+}
 }; 
 
-exports.edit = async function(req, res) {
+exports.edit = async (req, res) => {
     try {
         if(!req.params.id) return res.render('404');
 	    const contato = new Contato(req.body);
@@ -62,4 +64,20 @@ exports.edit = async function(req, res) {
         console.log(e);
         res.render('404');
     }
+};
+
+exports.delete = async (req, res) => {
+    try {
+	    if(!req.params.id) return res.render('404');
+	    
+	    const contato = await Contato.delete(req.params.id);
+	    if(!contato) return res.render('404');
+	    
+	    req.flash('success', 'Contato apagado!');
+	    req.session.save(() => {
+	        return res.redirect(`/`);
+	    });
+    } catch (error) {
+	
 }
+};

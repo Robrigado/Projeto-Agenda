@@ -63,9 +63,16 @@ class Contato {
     }
 
     static async getContatos() {
-        const contato = await ContatoModel.find()
+        const contatos = await ContatoModel.find()
         .sort({creationDate: -1});
-        return contato;
+        return contatos;
+    }
+
+    static async delete(id) {
+        if(typeof id !== 'string') return;    
+        const contato = await ContatoModel.findByIdAndDelete(id);
+        //const contato = await ContatoModel.findOneAndDelete({_id: id}); ---- outra forma
+        return contato;                                     
     }
 }
 

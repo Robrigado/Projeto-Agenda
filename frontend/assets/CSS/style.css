@@ -19,7 +19,10 @@
 a {
     text-decoration: none;
 }
-/* 
-#edit-btn, #delete-btn {
-    padding-top: 0px;
-} */
+
+#no-contact{
+    margin-top: 50px;
+    font-weight: 300;
+    color: rgb(86, 86, 86);
+    letter-spacing: 1px;
+}
