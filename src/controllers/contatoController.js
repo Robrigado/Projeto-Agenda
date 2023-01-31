@@ -19,7 +19,7 @@ exports.registerContact = async (req, res) => {
             return;
         }
         
-        req.flash('success', 'Contato modificado!');
+        req.flash('success', 'Contato salvo!');
         req.session.save(() => {
             return res.redirect(`/contato/${contato.contato._id}`);
         });

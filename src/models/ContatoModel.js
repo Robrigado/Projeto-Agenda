@@ -61,6 +61,12 @@ class Contato {
                                                               //novo obj    options new=true -> retorna o obj novo, ao invés do antigo                                
         this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true });                   
     }
+
+    static async getContatos() {
+        const contato = await ContatoModel.find()
+        .sort({creationDate: -1});
+        return contato;
+    }
 }
 
 
